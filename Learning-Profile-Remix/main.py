@@ -7,6 +7,7 @@ import base64
 from datetime import datetime
 import re
 import json
+import os
 import pandas as pd
 from utils.questions import QUESTIONS, LIKERT_SCALE, CATEGORIES
 from utils.scoring import calculate_scores, generate_description, get_personality_label
@@ -31,7 +32,8 @@ except Exception as e:
     st.error(f"Error initializing database: {str(e)}")
 
 # Load custom CSS
-with open("styles/custom.css") as f:
+css_file_path = os.path.join(os.path.dirname(__file__), "styles", "custom.css")
+with open(css_file_path) as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 # Initialize session state
